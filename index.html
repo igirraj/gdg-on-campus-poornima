@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <title>GDG on Campus Poornima University — Jaipur, India</title>
+    <meta name="title" content="GDG on Campus Poornima University — Jaipur, India" />
+    <meta
+      name="description"
+      content="GDG on Campus Poornima University is a student developer community in Jaipur, India. We host workshops, hackathons, and learning sessions on Google technologies. Learn. Build. Connect."
+    />
+    <meta name="keywords" content="GDG on Campus, Google Developer Groups on Campus, Poornima University, Jaipur, developer community, workshops, hackathons, AI, Firebase, Gemini, student community" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="GDG on Campus Poornima University" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://gdg.community.dev/gdg-on-campus-poornima-university-jaipur-india/" />
+    <meta property="og:title" content="GDG on Campus Poornima University — Jaipur, India" />
+    <meta property="og:description" content="A student developer community at Poornima University, Jaipur. Learn, build, and connect with like-minded developers through workshops, hackathons, and Google tech events." />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="GDG on Campus Poornima University — Jaipur, India" />
+    <meta property="twitter:description" content="A student developer community at Poornima University, Jaipur. Learn, build, and connect." />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- Theme color -->
+    <meta name="theme-color" content="#4285F4" />
+
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- ============================================================
+         GDG ON CAMPUS PRELOADER — "streak & swirl" splash.
+         The four Google colors streak in from the four edges as
+         ink-outlined capsules (matching the official GDG logo),
+         snap into a pinwheel cross, then vortex into the center
+         while the logo materializes from a blur behind a spinning
+         4-color conic ring.
+         Critical styles are inlined so it paints before any JS/CSS
+         arrives. Brandkit tokens mirror src/index.css.
+         ============================================================ -->
+    <style>
+      #gdg-preloader {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        background-color: #f0f0f0;
+        background-image: linear-gradient(to right, rgba(30, 30, 30, 0.055) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(30, 30, 30, 0.055) 1px, transparent 1px);
+        background-size: 44px 44px;
+        /* !important pins keep this one-shot intro animating even when the OS
+           reports prefers-reduced-motion — these selectors out-specify the
+           global `*` flatten rule in src/index.css. Every other animation on
+           the page keeps its reduced-motion behavior. */
+        transition: opacity 0.45s ease, visibility 0.45s ease !important;
+      }
+
+      #gdg-preloader.gdg-preloader--exit {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      body.gdg-preloading {
+        overflow: hidden;
+      }
+
+      /* Stage — where the four pieces converge and the logo forms */
+      .pre-stage {
+        position: relative;
+        width: 160px;
+        height: 160px;
+        transition: transform 0.45s ease, opacity 0.45s ease !important;
+      }
+
+      #gdg-preloader.gdg-preloader--exit .pre-stage {
+        transform: scale(1.12);
+        opacity: 0;
+      }
+
+      /* The four Google colors — ink-outlined capsules that streak in
+         from their edges and rest as a pinwheel cross around center */
+      .pre-piece {
+        position: absolute;
+        border-radius: 999px;
+        box-shadow: 0 0 0 4px #1e1e1e; /* ink outline, like the official logo */
+        will-change: transform, opacity;
+      }
+
+      .pre-piece-blue {
+        left: 58px;
+        top: -12px;
+        width: 44px;
+        height: 92px;
+        background: #4285f4;
+        transform-origin: 50% 100%; /* stage center */
+        --tx: 0px;
+        --ty: -62vh;
+        --tumble: -16deg;
+        animation: pre-swirl 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0s both !important;
+      }
+
+      .pre-piece-red {
+        left: 80px;
+        top: 58px;
+        width: 92px;
+        height: 44px;
+        background: #ea4335;
+        transform-origin: 0% 50%;
+        --tx: 62vw;
+        --ty: 0px;
+        --tumble: 16deg;
+        animation: pre-swirl 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.09s both !important;
+      }
+
+      .pre-piece-yellow {
+        left: 58px;
+        top: 80px;
+        width: 44px;
+        height: 92px;
+        background: #f9ab00;
+        transform-origin: 50% 0%;
+        --tx: 0px;
+        --ty: 62vh;
+        --tumble: 16deg;
+        animation: pre-swirl 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both !important;
+      }
+
+      .pre-piece-green {
+        left: -12px;
+        top: 58px;
+        width: 92px;
+        height: 44px;
+        background: #34a853;
+        transform-origin: 100% 50%;
+        --tx: -62vw;
+        --ty: 0px;
+        --tumble: -16deg;
+        animation: pre-swirl 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.27s both !important;
+      }
+
+      /* Spinning 4-color conic ring, shockwaving out from behind the logo */
+      .pre-ring {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background: conic-gradient(#4285f4, #ea4335, #f9ab00, #34a853, #4285f4);
+        -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 7px), #000 calc(100% - 6px));
+        mask: radial-gradient(farthest-side, transparent calc(100% - 7px), #000 calc(100% - 6px));
+        opacity: 0;
+        animation: pre-pulse 1.2s cubic-bezier(0.22, 1, 0.36, 1) 1.6s both !important;
+        pointer-events: none;
+      }
+
+      /* The official GDG logo materializing out of the swirling colors */
+      .pre-logo {
+        position: absolute;
+        inset: 0;
+        width: 160px;
+        height: 160px;
+        opacity: 0;
+        animation: pre-logo-form 0.9s cubic-bezier(0.22, 1, 0.36, 1) 1.15s both !important;
+      }
+
+      .pre-caption {
+        position: absolute;
+        top: calc(100% + 1.35rem);
+        left: 50%;
+        white-space: nowrap;
+        font-family: 'Google Sans Code', ui-monospace, monospace;
+        font-size: 0.62rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        color: #5f6368;
+        opacity: 0;
+        animation: pre-fade-up 0.65s ease 1.8s both !important;
+      }
+
+      /* Bottom progress rail — four Google colors revealed as it fills */
+      .pre-progress {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 10px;
+        background: #ffffff;
+        border-top: 3px solid #1e1e1e;
+      }
+
+      .pre-progress-fill {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 0;
+        background-image: linear-gradient(
+          to right,
+          #4285f4 0 25%,
+          #ea4335 25% 50%,
+          #f9ab00 50% 75%,
+          #34a853 75% 100%
+        );
+      }
+
+      /* One journey per capsule: streak in from its edge with a tumble,
+         snap into the pinwheel cross, hold, then vortex around the
+         stage center into a point as the logo takes over */
+      @keyframes pre-swirl {
+        0% {
+          opacity: 0;
+          transform: translate(var(--tx), var(--ty)) rotate(var(--tumble));
+        }
+
+        12% {
+          opacity: 1;
+        }
+
+        42% {
+          opacity: 1;
+          transform: translate(0, 0) rotate(0deg);
+        }
+
+        55% {
+          opacity: 1;
+          transform: translate(0, 0) rotate(0deg);
+          animation-timing-function: cubic-bezier(0.5, 0, 0.85, 0.35);
+        }
+
+        100% {
+          opacity: 0;
+          transform: rotate(150deg) scale(0.06);
+        }
+      }
+
+      @keyframes pre-logo-form {
+        0% {
+          opacity: 0;
+          transform: scale(0.55);
+          filter: blur(16px);
+        }
+
+        55% {
+          opacity: 1;
+          transform: scale(1.07);
+          filter: blur(2px);
+        }
+
+        100% {
+          opacity: 1;
+          transform: scale(1);
+          filter: blur(0);
+        }
+      }
+
+      @keyframes pre-pulse {
+        0% {
+          opacity: 0;
+          transform: rotate(0deg) scale(0.55);
+        }
+
+        14% {
+          opacity: 0.9;
+        }
+
+        100% {
+          opacity: 0;
+          transform: rotate(200deg) scale(2.4);
+        }
+      }
+
+      @keyframes pre-fade-up {
+        from {
+          opacity: 0;
+          transform: translate(-50%, 10px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translate(-50%, 0);
+        }
+      }
+
+      /* NOTE: the preloader intentionally does NOT honor prefers-reduced-motion —
+         the intro always plays (every timing above is pinned with !important so
+         the global reduce rule in src/index.css can't flatten it). All other
+         animations on the page still respect the OS setting. */
+    </style>
+  </head>
+  <body>
+    <!-- GDG on Campus preloader — four colors streak in, swirl, logo forms -->
+    <div
+      id="gdg-preloader"
+      role="status"
+      aria-label="Loading GDG on Campus Poornima University website"
+    >
+      <div class="pre-stage">
+        <span class="pre-piece pre-piece-blue"></span>
+        <span class="pre-piece pre-piece-red"></span>
+        <span class="pre-piece pre-piece-yellow"></span>
+        <span class="pre-piece pre-piece-green"></span>
+        <span class="pre-ring"></span>
+        <img class="pre-logo" src="/favicon-192.png" alt="" />
+        <span class="pre-caption">Poornima University · Jaipur</span>
+      </div>
+      <div class="pre-progress">
+        <div class="pre-progress-fill" id="gdg-pre-fill"></div>
+      </div>
+    </div>
+    <noscript>
+      <style>
+        #gdg-preloader {
+          display: none !important;
+        }
+      </style>
+    </noscript>
+    <script>
+      (function () {
+        var pre = document.getElementById('gdg-preloader');
+        if (!pre) return;
+
+        var fill = document.getElementById('gdg-pre-fill');
+        var start = performance.now();
+        var MIN_MS = 3000; // let the full streak-and-swirl animation play out
+        var finished = false;
+
+        document.body.classList.add('gdg-preloading');
+
+        // Lock the gradient to the viewport so the four Google colors
+        // are revealed in proportion as the rail fills
+        if (fill) {
+          fill.style.backgroundSize = document.documentElement.clientWidth + 'px 100%';
+        }
+
+        function render(p) {
+          if (fill) fill.style.width = p + '%';
+        }
+
+        // Ease toward 90% while the page loads, then complete on window load
+        function tick(now) {
+          var t = now - start;
+          render(Math.min(90, (1 - Math.exp(-t / 900)) * 90));
+          if (!finished) requestAnimationFrame(tick);
+        }
+
+        requestAnimationFrame(tick);
+
+        function finish() {
+          if (finished) return;
+          finished = true;
+          var wait = Math.max(0, MIN_MS - (performance.now() - start));
+          window.setTimeout(function () {
+            render(100);
+            window.setTimeout(function () {
+              pre.classList.add('gdg-preloader--exit');
+              document.body.classList.remove('gdg-preloading');
+              window.setTimeout(function () {
+                if (pre.parentNode) pre.parentNode.removeChild(pre);
+              }, 450);
+            }, 240);
+          }, wait);
+        }
+
+        if (document.readyState === 'complete') finish();
+        else window.addEventListener('load', finish);
+
+        // Safety net — a stalled asset must never trap visitors behind the preloader
+        window.setTimeout(finish, 8000);
+      })();
+    </script>
+
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
